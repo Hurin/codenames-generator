@@ -53,7 +53,7 @@ function init() {
     
 }
 
-init();
+generate = init();
 
 </script>
   
@@ -62,9 +62,9 @@ init();
 <body>  
 <h1>Codenames Map Generator</h1>
 <div id="main">
-<div id="map"/>
-
-<input type="button" value="Generate!" id="gen-button" onclick="Gen.generate()" />
+<div id="map">
+</div>
+<input type="button" value="Generate!" id="gen-button" onclick="generate()" />
 
 </div>
 
