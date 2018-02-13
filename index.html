@@ -52,8 +52,9 @@ function init() {
     }
   }  
 }
+ 
+window.onload = () => window.generate = init();
 
-generate = init();
 
 </script>
   
@@ -64,7 +65,7 @@ generate = init();
 <div id="main">
 <div id="map">
 </div>
-<input type="button" value="Generate!" id="gen-button" onclick="generate()" />
+<input type="button" value="Generate!" id="gen-button" onclick="window.generate()" />
 
 </div>
 
