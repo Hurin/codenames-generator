@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="utf-8" />
+  <title>Codenames Map Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+  
+<script language="javascript">
+function permutation(rsort) {     
+ for(var idx = 0; idx < rsort.length; idx++)
+ {
+    var swpIdx = idx + Math.floor(Math.random() * (rsort.length - idx));
+    // now swap elements at idx and swpIdx
+    var tmp = rsort[idx];
+    rsort[idx] = rsort[swpIdx];
+    rsort[swpIdx] = tmp;
+ }
+}
+
+function init() {
+    var map = document.getElementById("map");
+
+    var buttons = new Array(25);
+
+    for(var ibuttons[i]=0;i<buttons.length;i++) {
+        buttons[i] = document.createElement("button");
+        buttons[i].style += " map-button";
+        map.appendChild(buttons[i]);
+    }
+    
+    
+    
+    return function generate() {
+        var order = new Array(25);
+
+        for(var i=0;i<order.length;i++) {
+            buttons[i] = i;
+        }
+        permutation(order);
+        
+        var currentClass = "black-card"
+        var coin = Math.random(2) > 1 ? true : false;
+        
+        for(var i=0;i<order.length;i++) {
+        
+        if (i === 1) currentClass = coin ? "blue-card" : "red-card";
+        if (i === 9) currentClass = coin ? "red-card" : "blue-card";
+        if (i === 18) currentClass = "sand-card";
+        buttons[order[i]].style += currentClass;
+        
+    }
+    
+}
+
+init();
+
+</script>
+  
+</head>
+
+<body>  
+<h1>Codenames Map Generator</h1>
+<div id="main">
+<div id="map"/>
+
+<input type="button" value="Generate!" id="gen-button" onclick="Gen.generate()" />
+
+</div>
+
+
+<script src="scripts/stones.js"></script>
+
+</body>
+</html>
