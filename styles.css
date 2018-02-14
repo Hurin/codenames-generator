@@ -1,0 +1,26 @@
+.map-card {
+
+width: 100;
+height:100;
+
+.black-card {
+    color:black;
+}
+
+.red-card {
+    color:red;
+}
+
+.sand-card {
+    color:white;
+}
+
+.blue-card {
+    color:blue;
+}
+}
+
+.map {
+    width:500;
+    height:500;
+}
