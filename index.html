@@ -25,7 +25,7 @@ function init() {
 
     for(var i=0;i<buttons.length;i++) {
         buttons[i] = document.createElement("button");
-        buttons[i].class += " map-button";
+        buttons[i].className += " map-button";
         map.appendChild(buttons[i]);
     }
     
@@ -47,7 +47,7 @@ function init() {
         if (i === 1) currentClass = coin ? " blue-card" : " red-card";
         if (i === 9) currentClass = coin ? " red-card" : " blue-card";
         if (i === 18) currentClass = " sand-card";
-        buttons[order[i]].class += currentClass;
+        buttons[order[i]].className += currentClass;
         
     }
   }  
