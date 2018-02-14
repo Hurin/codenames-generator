@@ -17,9 +17,50 @@ function permutation(rsort) {
     rsort[swpIdx] = tmp;
  }
 }
+ 
+ function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
 
-function init() {
-    
+ function getClass(char) {
+ switch(char) {
+    case "w":
+        return " white-card";
+    case "l":
+        return " blue-card";
+    case "b":
+        return " black-card";
+    case "r":
+        return " red-card";
+    default:
+        return " white-card";
+}
+ }
+ 
+ function getCharClass(char) {
+ switch(char) {
+    case: " white-card":
+        return "w";
+    case: " blue-card"
+        return "l";
+    case: " black-card":
+        return "b";
+    case " red-card":
+        return "r";
+    default:
+        return "w";
+}
+ }
+ 
     return function generate() { 
         var map = document.getElementById("map");
         map.innerHTML = "";
@@ -37,22 +78,33 @@ function init() {
             order[i] = i;
         }
         permutation(order);
+        var givenMap = findGetParameter("map");
+        var chars = null;
+        if (givenMap != null) {
+            chars = givenMap.split('').map(getClass);
+        }
         
         var currentClass = " black-card"
         var coin = Math.random(2) > 1 ? true : false;
+        var classes = []
         
         for(var i=0;i<order.length;i++) {
         
         if (i === 1) currentClass = coin ? " blue-card" : " red-card";
         if (i === 9) currentClass = coin ? " red-card" : " blue-card";
         if (i === 18) currentClass = " sand-card";
-        buttons[order[i]].className += currentClass;
+        classes[order[i]] = currentClass;
+        }  
+        classes = chars || classes;
         
-    }
-  }  
+        for(var i=0;i<order.length;i++) {
+        buttons[i].className += classes[i];
+        }  
+        var link = document.getElementById("link");
+        link.value = classes.accumulate((curr, next) => curr + getChar(next), "");        
 }
  
-window.onload = () => window.generate = init();
+window.onload = generate;
 
 
 </script>
@@ -64,7 +116,7 @@ window.onload = () => window.generate = init();
 <div id="main">
 <div id="map" class=map>
 </div>
-<input type="button" value="Generate!" id="gen-button" onclick="window.generate()" />
+<input id="link"/>
 
 </div>
 
