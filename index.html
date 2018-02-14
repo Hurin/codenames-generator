@@ -19,19 +19,18 @@ function permutation(rsort) {
 }
 
 function init() {
-    var map = document.getElementById("map");
+    
+    return function generate() { 
+        var map = document.getElementById("map");
+        map.innerHTML = "";
 
-    var buttons = new Array(25);
-
-    for(var i=0;i<buttons.length;i++) {
-        buttons[i] = document.createElement("button");
-        buttons[i].className += " map-card";
-        map.appendChild(buttons[i]);
-    }
-    
-    
-    
-    return function generate() {
+        var buttons = new Array(25);
+        for(var i=0;i<buttons.length;i++) {
+            buttons[i] = document.createElement("button");
+            buttons[i].className += " map-card";
+            map.appendChild(buttons[i]);
+        }
+     
         var order = new Array(25);
 
         for(var i=0;i<order.length;i++) {
