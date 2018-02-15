@@ -101,7 +101,7 @@ function permutation(rsort) {
         buttons[i].className += classes[i];
         }  
         var link = document.getElementById("link");
-        link.value = classes.reduce((curr, next) => curr + getChar(next), "");        
+        link.value = "https://hurin.github.io/codenames-generator/?map=" + classes.reduce((curr, next) => curr + getChar(next), "");        
 }
  
 window.onload = generate;
@@ -116,7 +116,7 @@ window.onload = generate;
 <div id="main">
 <div id="map" class=map>
 </div>
-<input id="link"/>
+<div id="link"/>
 
 </div>
 
