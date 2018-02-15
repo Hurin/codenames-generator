@@ -101,7 +101,7 @@ function permutation(rsort) {
         buttons[i].className += classes[i];
         }  
         var link = document.getElementById("link");
-        link.value = classes.accumulate((curr, next) => curr + getChar(next), "");        
+        link.value = classes.reduce((curr, next) => curr + getChar(next), "");        
 }
  
 window.onload = generate;
