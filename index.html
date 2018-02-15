@@ -101,7 +101,7 @@ function permutation(rsort) {
         buttons[i].className += classes[i];
         }  
         var link = document.getElementById("link");
-        link.text = "https://hurin.github.io/codenames-generator/?map=" + classes.reduce((curr, next) => curr + getChar(next), "");        
+        link.innerHTML = "https://hurin.github.io/codenames-generator/?map=" + classes.reduce((curr, next) => curr + getChar(next), "");        
 }
  
 window.onload = generate;
